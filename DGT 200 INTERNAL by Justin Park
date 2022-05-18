@@ -1,276 +1,396 @@
-# This import will give the time of when the order was finished.
+# This import will give the time of when the order is finished on the receipt.
 import time as t
 
-# Welcomes the user to Henderson Pizza Palance.
+#Welcomes the user to Henderson Pizza Palace.
 print(
-    "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n| Welcome to Henderson Pizza Palace :) |\n|        Online Ordering System        |\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n| Welcome to Henderson Pizza Palace :) |\n|        Online Ordering System        |\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 print("")
 print("Type X to exit")
 print("")
 t.sleep(0.8)
 
-# Asks the user if they would like their pizza delivered to their house or would like to pick it up.
-print("Please choose an option for how you would like to recieve your pizza:")
+#Gives the user a menu and asks if they would like delivery or pickup.
+print("Please choose an option for how you would like to receive your pizza:")
 delivery_status = input("1: Delivery ($3 charge)\n2: Pickup\n> Enter Here: ")
 
-# This function allows the user to enter in their details for delivery when option 1 is chosen and allows the user to edit the details if something is incorrect.
+#This function allows the user to enter in their details for  when option 1 is chosen.
 def delivery():
-    # This code makes sure the user inputs their name
-    print("Please enter your details in the following: ")
-    name = str(input("What is your name?\n")).title().strip()
-    checks_str = name.isalpha()
-    if checks_str == True:
-        pass
-    else:
-        while True:
-            name = str(input("What is your name?\n")).title().strip()
-            checks_str = name.isalpha()
-            if checks_str == True:
-                break
-    address = input("Where would you like your pizza delivered?\n").title()
-    while True:
-        try:
-            phone_num = int(input("What is your phone number?\n"))
-            phone_num_length = len(str(phone_num))
-            if phone_num_length < 8:
-                print("That is not a valid phone number. Please enter a real phone number!")
-            elif phone_num_length > 11:
-                print("That is not a valid phone number. Please enter a real phone number!")
-            elif phone_num_length >= 8:
-                break
-        except ValueError:
-            print("That is not a valid phone number. Please enter a real phone number!")
 
-    # This code inside the function asks the user if the details they entered are correct and allows them to answer with Yes/No.
-    print(
-        "Please double check the information you put in is correct. This is important as this will determine where the pizza will be delivered to.")
-    t.sleep(1.5)
-    global confirmation
-    confirmation = input(
-        "Is the following information correct? (Yes/No)  \nYour name is {} \nYour address is {}\nYour phone number is {}\n> Enter Here: ".format(
-            name, address, phone_num)).strip().lower()
+  # This code makes sure the user doesn’t type any symbols or numbers in their name.
+  print("\nYou will be charged $3 for the delivery fees.")
+  print("\nPlease enter your details in the following: ")
+  # This code makes sure the user doesn’t type any symbols or numbers in their name.
+  name = str(input("What is your name?\n")).title().strip()
+  checks_str = name.isalpha()
+  if checks_str == True:
+      pass
+  else:
+      while True:
+          name = str(input("What is your name?\n")).title().strip()
+          checks_str = name.isalpha()
+          if checks_str == True:
+              break
+  address = input("Where would you like your pizza delivered?\n").title()
+  while True:
+      try:
+#This code makes sure the user types a valid phone number with only numbers.
+          phone_num = int(input("What is your phone number?\n"))
+          phone_num_length = len(str(phone_num))
+          if phone_num_length < 8:
+              print("That is not a valid phone number. Please enter a real phone number!")
+          elif phone_num_length > 11:
+              print("That is not a valid phone number. Please enter a real phone number!")
+          elif phone_num_length >= 8:
+              break
+      except ValueError:
+          print("That is not a valid phone number. Please enter a real phone number!")
 
-    # This code inside the function allows the user to edit their details when the user replies with "no".
-    if confirmation == "yes":
-        print("Perfect!")
-    elif confirmation == "no":
-        while True:
-            confirmation = input(
-                "Please choose the following you would like to edit: \n1: Name \n2: Address \n3: Phone Number\n> Enter Here: ".format(
-                    name, address, phone_num)).strip().lower()
-            if confirmation == "1":
-                name = input("What is your name? \n").title()
-            elif confirmation == '2':
-                address = input("Where would you like your pizza delivered? \n").title()
-            elif confirmation == '3':
-                phone_num = int(input("What is your phone number? \n"))
-            confirmation = input(
-                "Is the following information correct? (Yes/No)  \nYour name is {} \nYour address is {}\nYour phone number is {}\n> Enter Here: ".format(
-                    name, address, phone_num)).strip().lower()
-            if confirmation == 'yes':
-                print("Perfect!")
-                break
+  #This code inside the function asks the user if the details they entered are correct and allows them to answer with Yes/No.
+  print(
+      "Please double check the information you put in is correct. This is important as this will determine where the pizza will be delivered to.")
+  t.sleep(1.5)
+  global confirmation
+  confirmation = input(
+      "Is the following information correct? (Yes/No)  \nYour name is {} \nYour address is {}\nYour phone number is {}\n> Enter Here: ".format(
+          name, address, phone_num)).strip().lower()
 
-# Runs details function when the user inputs "1" in the delivery status
-if delivery_status == "1":
-    delivery()
+  #This code inside the function allows the user to edit their details when the user replies with "no".
+  if confirmation == "yes":
+      print("Perfect!")
+  elif confirmation == "no":
+      while True:
+          confirmation = input(
+              "Please choose the following you would like to edit: \n1: Name \n2: Address \n3: Phone Number\n> Enter Here: ".format(
+                  name, address, phone_num)).strip().lower()
+          if confirmation == "1":
+              name = input("What is your name? \n").title()
+          elif confirmation == '2':
+              address = input("Where would you like your pizza delivered? \n").title()
+          elif confirmation == '3':
+              phone_num = int(input("What is your phone number? \n"))
+          confirmation = input(
+              "Is the following information correct? (Yes/No)  \nYour name is {} \nYour address is {}\nYour phone number is {}\n> Enter Here: ".format(
+                  name, address, phone_num)).strip().lower()
+          if confirmation == 'yes':
+              print("Perfect!")
+              break
 
-# This function allows the user to enter in their details when option 1 is chosen and allows the user to edit the details if something is incorrect.
+
+
+#This function allows the user to enter in their details when option 2 is chosen.
 def pickup():
-    print("Please enter your details in the following: ")
-    name = str(input("What is your name?\n")).title().strip()
-    checks_str = name.isalpha()
-    if checks_str == True:
-        pass
-    else:
-        while True:
-            name = str(
-                input("That is not a name! Please enter a valid name with no numericals or symbols\n")).title().strip()
-            checks_str = name.isalpha()
-            if checks_str == True:
-                break
+
+#Copy of previous code but for Pickup.
+  print("Please enter your details in the following: ")
+  name = str(input("What is your name?\n")).title().strip()
+  checks_str = name.isalpha()
+  if checks_str == True:
+      pass
+  else:
+      while True:
+          name = str(
+              input("That is not a name! Please enter a valid name with no numbers or symbols\n")).title().strip()
+
+          checks_str = name.isalpha()
+          if checks_str == True:
+              break
+  while True:
+      try:
+          phone_num = int(input("What is your phone number?\n"))
+          phone_num_length = len(str(phone_num))
+          if phone_num_length < 8:
+              print("That is not a valid phone number. Please enter a real phone number!")
+          elif phone_num_length > 11:
+              print("That is not a valid phone number. Please enter a real phone number!")
+          elif phone_num_length >= 8:
+              break
+      except ValueError:
+          print("That is not a valid phone number. Please enter a real phone number!")
+
+  print(
+      "Please double check the information you put in is correct. This is important as this will determine where the pizza will be delivered to.")
+  t.sleep(1.5)
+  global confirmation
+  confirmation = input(
+      "Is the following information correct? (Yes/No)  \nYour name is {}\nYour phone number is {}\n> Enter Here: ".format(
+          name, phone_num)).strip().lower()
+
+  if confirmation == "yes":
+      print("Perfect!")
+  elif confirmation == "no":
+      while True:
+          confirmation = input(
+              """Please choose the following you would like to edit: \n1: Name \n2: Phone Number\n> Enter Here: """.format(
+                  name, phone_num)).strip().lower()
+          if confirmation == "1":
+              name = input("What is your name? \n").title()
+          elif confirmation == '2':
+              phone_num = int(input("What is your phone number? \n"))
+          confirmation = input(
+              "Is the following information correct? (Yes/No)  \nYour name is {} \nYour phone number is {}\n> Enter Here: ".format(
+                  name, phone_num)).strip().lower()
+          if confirmation == 'yes':
+              print("Perfect!")
+              break
+
+
+#This runs the delivery function when the user inputs "1" in the delivery status.
+if delivery_status == "1":
+  delivery()
+#This runs the pickup function when the user inputs "2" in the delivery status.
+elif delivery_status == "2":
+  pickup()
+else:
     while True:
-        try:
-            phone_num = int(input("What is your phone number?\n"))
-            phone_num_length = len(str(phone_num))
-            if phone_num_length < 8:
-                print("That is not a valid phone number. Please enter a real phone number!")
-            elif phone_num_length > 11:
-                print("That is not a valid phone number. Please enter a real phone number!")
-            elif phone_num_length >= 8:
-                break
-        except ValueError:
-            print("That is not a valid phone number. Please enter a real phone number!")
-
-    # This code inside the function asks the user if the details they entered are correct and allows them to answer with Yes/No.
-    print(
-        "Please double check the information you put in is correct. This is important as this will determine where the pizza will be delivered to.")
-    t.sleep(1.5)
-    global confirmation
-    confirmation = input(
-        "Is the following information correct? (Yes/No)  \nYour name is {}\nYour phone number is {}\n> Enter Here: ".format(
-            name, phone_num)).strip().lower()
-
-    # This code inside the function allows the user to edit their details when the user replies with "no".
-    if confirmation == "yes":
-        print("Perfect!")
-    elif confirmation == "no":
-        while True:
-            confirmation = input(
-                """Please choose the following you would like to edit: \n1: Name \n2: Phone Number\n> Enter Here: """.format(
-                    name, phone_num)).strip().lower()
-            if confirmation == "1":
-                name = input("What is your name? \n").title()
-            elif confirmation == '2':
-                phone_num = int(input("What is your phone number? \n"))
-            confirmation = input(
-                "Is the following information correct? (Yes/No)  \nYour name is {} \nYour phone number is {}\n> Enter Here: ".format(
-                    name, phone_num)).strip().lower()
-            if confirmation == 'yes':
-                print("Perfect!")
-                break
-
-# Runs details function when the user inputs "1" in the delivery status.
-if delivery_status == "2":
-    pickup()
-
-# This asks the user how many pizzas they would like to order and the question will keep looping until they enter a valid value between 1-5.
-while True:
-    try:
-        num_of_pizza = int(
-            input("Please enter the number of pizzas you would like to order (Maximum of 5)\n> Enter Here: "))
-
-        # This creates a loop until the user enters a valid value or a number that is higher than 0 or less than or equal to 5.
-        if num_of_pizza > 5:
-            print("The maximum amount of pizzas you are allowed to buy are only 5!")
-        elif num_of_pizza <= 0:
-            print("Please enter a valid amount!")
-        elif num_of_pizza <= 5:
-            print("Perfect!")
-            print("Please choose which pizza you would like to order from the list of pizzas")
+        delivery_status = input("\nSorry that was not an Option:\n1: Delivery ($3 charge)\n2: Pickup\n> Enter Here: ")
+        # This runs the delivery function when the user inputs "1" in the delivery status.
+        if delivery_status == "1":
+            delivery()
             break
-    except ValueError:
-        print("Please enter a number between 0 - 5")
+        # This runs the pickup function when the user inputs "2" in the delivery status.
+        elif delivery_status == "2":
+            pickup()
+            break
 
-# This code gives a dictionary of 6 regular pizza and 6 gourment pizzas.
+#This creates a loop until the user enters a valid value or a number that is higher than 0 or less than or equal to 5.
+while True:
+  try:
+      num_of_pizza = int(
+          input("Please enter the number of pizzas you would like to order (Maximum of 5)\n> Enter Here: "))
+
+      #This creates a loop until the user enters a valid value or a number that is higher than 0 or less than or equal to 5.
+      if num_of_pizza > 5:
+          print("The maximum amount of pizzas you are allowed to buy are only 5!")
+      elif num_of_pizza <= 0:
+          print("Please enter a valid amount!")
+      elif num_of_pizza <= 5:
+          print("Perfect!")
+          print("Please choose which pizza you would like to order from the list of pizzas")
+          break
+  except ValueError:
+      print("Please enter a number between 0 - 5")
+
+#This code gives a dictionary of 6 regular pizzas and 6 gourmet pizzas.
 regular_pizzas = {'Hawaiian': '$8.50', 'Pepperoni': '$8.50', 'Ham & Cheese': '$8.50', 'Beef & Onion': '$8.50',
-                  'Cheesy Garlic': '$8.50', 'Vegetarian': '$8.50'}
+                'Cheesy Garlic': '$8.50', 'Vegetarian': '$8.50'}
 gourmet_pizzas = {'Peri Peri Chicken': '$13.50', 'BBQ Chicken & Rasher Bacon': '$13.50',
-                  'Chicken & Camembert': '$13.50', 'Meat Lovers': '$13.50', 'Buffalo Chicken': '$13.50',
-                  'Garlic Chicken & Parmesan': '$13.50'}
+                'Chicken & Camembert': '$13.50', 'Meat Lovers': '$13.50', 'Buffalo Chicken': '$13.50',
+                'Garlic Chicken & Parmesan': '$13.50'}
 
-# This code prints the list of regular range and gourmet range pizzas the Henderson Palace is selling.
+#This code prints the list of regular range and gourmet range pizzas
 print(
-    "===========================================================================\nREGULAR Range\n===========================================================================")
+  "===========================================================================\nREGULAR Range\n===========================================================================")
 for regular_pizza_name, regular_price in regular_pizzas.items():
-    print(f"{regular_pizza_name} : {regular_price}")
+  print(f"{regular_pizza_name} : {regular_price}")
 print("")
 print(
-    "===========================================================================\nGOURMET Range\n===========================================================================")
+  "===========================================================================\nGOURMET Range\n===========================================================================")
 for gourmet_pizza_name, gourmet_price in gourmet_pizzas.items():
-    print(f"{gourmet_pizza_name} : {gourmet_price}")
+  print(f"{gourmet_pizza_name} : {gourmet_price}")
 print("")
-print("===========================================================================")
 
-# These functions take the users pizza order and checks if it is in the menu
+
+#This code gives a dictionary of extra toppings for the pizza.
+extra_toppings = {'Extra Pepperoni': '$0.50', 'Extra Mushroom': '$0.50', 'Extra Cheese': '$0.50',
+                'Extra sausage': '$0.50', 'Extra Onion': '$0.50', 'Extra Black Olives': '$0.50'}
+print(
+    "===========================================================================\nEXTRA Toppings\n===========================================================================")
+for extra_toppings, extra_toppings_price in extra_toppings.items():
+    print(f"{extra_toppings} : {extra_toppings_price}")
+print("")
+#This function takes the users pizza order and checks if it's in the menu
 def pizza_orders(user_entry):
-    regular_pizzas = ['Hawaiian', 'Pepperoni', 'Ham&Cheese', 'Beef&Onion',
-              'Cheesygarlic', 'Vegetarian']
+  regular_pizzas = ['Hawaiian', 'Pepperoni', 'Ham&Cheese', 'Beef&Onion',
+            'Cheesygarlic', 'Vegetarian']
 
-    gourmet_range = ['Periperichicken', 'Bbqchicken&Rasherbacon',
-              'Chicken&Camembert', 'Meatlovers', 'Buffalochicken',
-              'Garlicchicken&Parmesan']
+  gourmet_range = ['Periperichicken', 'Bbqchicken&Rasherbacon',
+            'Chicken&Camembert', 'Meatlovers', 'Buffalochicken',
+            'Garlicchicken&Parmesan']
 
-    # for pizza_regular in pizzas():
-    if user_entry in regular_pizzas:
-        print(f"{pizza_order} : $8.50")
-    elif user_entry not in regular_pizzas:
-        if user_entry in gourmet_range:
-            print(f"{pizza_order} : $13.50")
-        else:
-            print("SORRY THAT IS NOT IN THE MENU")
+  if user_entry in regular_pizzas:
+      print(f"{pizza_order} : $8.50")
+  elif user_entry not in regular_pizzas:
+      if user_entry in gourmet_range:
+          print(f"{pizza_order} : $13.50")
+      else:
+          print("THAT IS NOT IN THE MENU")
+          return 0
 
 regular_pizzas_list = ['Hawaiian', 'Pepperoni', 'Ham & Cheese', 'Beef & Onion','Cheesy Garlic', 'Vegetarian']
 
 gourmet_pizzas_list = ['Peri Peri Chicken', 'Bbq Chicken & Rasher Bacon',
-                       'Chicken & Camembert', 'Meat Lovers', 'Buffalo Chicken',
-                       'Garlic Chicken & Parmesan']
+                     'Chicken & Camembert', 'Meat Lovers', 'Buffalo Chicken',
+                     'Garlic Chicken & Parmesan']
+
+def topping_choice(user_topping):
+    extra_toppings = ['Extra Pepperoni', 'Extra Mushroom', 'Extra Cheese',
+                      'Extra sausage', 'Extra Onion', 'Extra Black Olives']
+    if user_topping in extra_toppings:
+        print(f"{user_topping} : $0.50")
+    else:
+        print("SORRY THAT IS NOT A TOPPING")
+        return 0
 
 regular_price_list = []
 gourmet_price_list = []
-unkown_list = []
-
-# This code makes sure the user doesn't go over the amount of pizzas they entered in num_of_pizza.
-pizza_order = input("ENTER YOUR ORDER HERE: ").title()
+topping_choice_list = []
+invalid_list = []
+#This code makes the input more flexible which allows them to enter without spaces and capital letters.
+pizza_order = input("ENTER YOUR PIZZA ORDER HERE: ").title()
 split_list = pizza_order.split(" ")
 removing_gap = ""
 for gap_machine in split_list:
-    removing_gap += gap_machine.title()
+  removing_gap += gap_machine.title()
 making_pizza_order_title = removing_gap.title()
-pizza_orders(making_pizza_order_title)
+taking_error = pizza_orders(making_pizza_order_title)
+
+#This code takes the user's pizza order and appends it in its respective pizza list.
 if pizza_order in regular_pizzas_list:
-    regular_price_list.append(pizza_order)
+  regular_price_list.append(pizza_order)
 elif pizza_order in gourmet_pizzas_list:
-    gourmet_price_list.append(pizza_order)
+  gourmet_price_list.append(pizza_order)
 else:
-    unkown_list.append(pizza_order)
+  invalid_list.append(pizza_order)
 
-pizza_count = 0
 
-while True:
-    pizza_count += 1
-    pizza_order = input("Enter your next pizza here: ").title()
+while taking_error == 0:
+    pizza_order = input("PLEASE TRY AGAIN:\n").title()
     split_list = pizza_order.split(" ")
     removing_gap = ""
     for gap_machine in split_list:
         removing_gap += gap_machine.title()
-
+    making_pizza_order_title = removing_gap.title()
+    taking_error = pizza_orders(making_pizza_order_title)
     if pizza_order in regular_pizzas_list:
         regular_price_list.append(pizza_order)
     elif pizza_order in gourmet_pizzas_list:
         gourmet_price_list.append(pizza_order)
     else:
-        unkown_list.append(pizza_order)
-    making_pizza_order_title = removing_gap.title()
-    pizza_orders(making_pizza_order_title)
-    number_pizza = num_of_pizza - 1
-    if pizza_count == number_pizza:
+        invalid_list.append(pizza_order)
+    if taking_error != 0:
         break
-print("Perfect!\n")
 
+
+#This code asks the user if they would like extra toppings and prints the dictionary if user inputs "yes".
+while True:
+    extra_toppings_1 = input(f"Would you like to add any extra toppings to {pizza_order} pizza? ").lower().strip()
+    if extra_toppings_1 == 'no':
+        break
+    elif extra_toppings_1 == 'yes':
+        break
+if extra_toppings_1 == "yes":
+    toppings_choice_input = input("CHOOSE THE EXTRA TOPPINGS YOU WOULD LIKE ON YOUR PIZZA: ").title()
+    toppings_error = topping_choice(toppings_choice_input.title().strip())
+    if toppings_error == 0:
+        pass
+    elif toppings_error != 0:
+        topping_choice_list.append(toppings_choice_input)
+    while toppings_error == 0:
+            toppings_choice_input = input("CHOOSE THE EXTRA TOPPINGS YOU WOULD LIKE ON YOUR PIZZA: ").title()
+            toppings_error = topping_choice(toppings_choice_input.title().strip())
+            topping_choice_list.append(toppings_choice_input)
+            if toppings_error != 0:
+                break
+
+
+#This code makes sure the user doesn't go over the amount of pizzas they entered in num_of_pizza.
+pizza_count = 0
+if num_of_pizza > 1:
+    while True:
+      pizza_count += 1
+      pizza_order = input("Enter your next pizza here: ").title()
+      split_list = pizza_order.split(" ")
+      removing_gap = ""
+      for gap_machine in split_list:
+          removing_gap += gap_machine.title()
+
+      if pizza_order in regular_pizzas_list:
+          regular_price_list.append(pizza_order)
+      elif pizza_order in gourmet_pizzas_list:
+          gourmet_price_list.append(pizza_order)
+      else:
+          invalid_list.append(pizza_order)
+      making_pizza_order_title = removing_gap.title()
+      taking_error = pizza_orders(making_pizza_order_title)
+
+      while taking_error == 0:
+          pizza_order = input("PLEASE TRY AGAIN:\n").title()
+          split_list = pizza_order.split(" ")
+          removing_gap = ""
+          for gap_machine in split_list:
+              removing_gap += gap_machine.title()
+          making_pizza_order_title = removing_gap.title()
+          taking_error = pizza_orders(making_pizza_order_title)
+          if pizza_order in regular_pizzas_list:
+              regular_price_list.append(pizza_order)
+          elif pizza_order in gourmet_pizzas_list:
+              gourmet_price_list.append(pizza_order)
+          else:
+              invalid_list.append(pizza_order)
+          if taking_error != 0:
+              break
+
+
+
+      # This code asks the user if they would like extra toppings and prints the dictionary if user inputs "yes".
+      # This code asks the user if they would like extra toppings and prints the dictionary if user inputs "yes".
+      while True:
+          extra_toppings_1 = input(f"Would you like to add any extra toppings to {pizza_order} pizza? ").lower().strip()
+          if extra_toppings_1 == 'no':
+              break
+          elif extra_toppings_1 == 'yes':
+              break
+      if extra_toppings_1 == "yes":
+          toppings_choice_input = input("CHOOSE THE EXTRA TOPPINGS YOU WOULD LIKE ON YOUR PIZZA: ").title()
+          toppings_error = topping_choice(toppings_choice_input.title().strip())
+          if toppings_error == 0:
+              pass
+          elif toppings_error != 0:
+              topping_choice_list.append(toppings_choice_input)
+          while toppings_error == 0:
+              toppings_choice_input = input("CHOOSE THE EXTRA TOPPINGS YOU WOULD LIKE ON YOUR PIZZA: ").title()
+              toppings_error = topping_choice(toppings_choice_input.title().strip())
+              topping_choice_list.append(toppings_choice_input)
+              if toppings_error != 0:
+                  break
+
+
+
+
+      number_pizza = num_of_pizza - 1
+      if pizza_count == number_pizza:
+          break
+else:
+    pass
+print("Perfect!")
+
+#This code helps the program recognize which pizza belongs to which price.
 total_price_regular_range = len(regular_price_list) * 8.50
-total_price_gouremt_range = len(gourmet_price_list) * 13.50
-total_price = total_price_regular_range + total_price_gouremt_range
+total_price_gourmet_range = len(gourmet_price_list) * 13.50
+extra_toppings_price = len(topping_choice_list) * 0.50
+print(topping_choice_list)
+print(regular_price_list)
+print(gourmet_price_list)
+total_price = total_price_regular_range + total_price_gourmet_range + extra_toppings_price
+if delivery_status == "1":
+    total_price = total_price_regular_range + extra_toppings_price + total_price_gourmet_range + 3 #This code charges an extra $3 for delivery fees
+
+# This code prints out the receipt of the order.
+print("\n\n===========================================================================\n                       HENDERSON PIZZA PALACE\n         21 Henderson Valley Road, Henderson, Auckland 0612\n                              09-838 9085\n===========================================================================")
+time = t.localtime()
+final = t.strftime("%A, %B %d, %Y - %H:%M:%S")
+print("     Your order was placed on {}\n===========================================================================\nYou ordered the following pizzas:\n".format(final))
 print("REGULAR RANGE")
 for regular_present in regular_price_list:
-    print(f"{regular_present} : $8.50")
+  print(f"{regular_present} : $8.50")
+
 print("\nGOURMET RANGE")
-for goruemt_range_present in gourmet_price_list:
-    print(f"{goruemt_range_present} : $13.50")
-print(f"\nYour total Price is {total_price}")
+for gourmet_range_present in gourmet_price_list:
+  print(f"{gourmet_range_present} : $13.50")
 
-# This code gives a dictionary of extra toppings for the pizza.
-extra_toppings = {'Extra Pepperoni': '$0.50', 'Extra Mushroom': '$0.50', 'Extra Cheese': '$0.50',
-                  'Extra sausage': '$0.50', 'Extra Onion': '$0.50', 'Extra Black Olives': '$0.50'}
-
-# This code
-"""
-def user_extra_toppings():
-    extra_toppings = {'Extra Pepperoni': '$0.50', 'Extra Mushroom': '$0.50', 'Extra Cheese': '$0.50',
-                      'Extra sausage': '$0.50', 'Extra Onion': '$0.50', 'Extra Black Olives': '$0.50'}
-    for extra_topping, price in extra_toppings.items():
-        if user_entry == extra_topping:
-            print(f"{extra_topping}:{price[user_entry]}")
-"""
-
-# This code asks the user if they would like extra toppings on their pizza.
-extra_toppings_option = input("Would you like extra toppings on your pizza? (Yes/No): ").title().strip()
-if extra_toppings_option == 'Yes':
-    print(
-        "Please choose which extra toppings you would like on your pizza\n===========================================================================\nEXTRA Toppings\n===========================================================================")
-elif extra_toppings_option == 'No':
-    print("Perfect!")
-else:
-    print("That was not an option!")
-
-# This code asks the user which toppings they would like.
+print("\nEXTRA TOPPINGS:(According to your path)")
+for toppings_present in topping_choice_list:
+    print(f"{toppings_present} : $0.50")
+if delivery_status == "1":
+    print("\n+$3 delivery fee")
+print("===========================================================================\nYour total price is ${:.2f}\n===========================================================================\nThank you for ordering at Henderson Pizza Palace! :)".format(total_price))
