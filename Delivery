@@ -1,0 +1,206 @@
+# Imports of built-in python functions
+import time as t
+import sys
+
+#This function allows the user to enter in their details for  when option 1 is chosen.
+def delivery():
+      print("\nYou will be charged $3 for the delivery fees.")
+      print("\nPlease enter your details in the following: ")
+
+      # This code makes sure the user doesn’t type any symbols or numbers in their name.
+      name = str(input("What is your name?\n")).title().strip()
+      checks_str = name.isalpha()
+      if checks_str == True:
+          if name == "X":
+              print("SystemExit: Thank you for using my Henderson Pizza Palace program!")
+              sys.exit()
+          else:
+              pass
+          pass
+      else:
+
+          # This code puts the name input in a while loop until a valid name is entered (no symbols or numbers).
+          while True:
+              name = str(input("What is your name?\n")).title().strip()
+              checks_str = name.isalpha()
+              if checks_str == True:
+                  if name == "X":
+                      print("SystemExit: Thank you for using my Henderson Pizza Palace program!")
+                      sys.exit()
+                  else:
+                      pass
+                  break
+
+      address = input("Where would you like your pizza delivered?\n").title()
+      if address == "X":
+          print("SystemExit: Thank you for using my Henderson Pizza Palace program!")
+          sys.exit()
+      else:
+          pass
+
+      # This code puts the phone number input in a while loop until valid phone number is entered (8-10 characters).
+      while True:
+              phone_num = input("What is your phone number?\n").lower()
+              if phone_num.isdigit() == True:
+                  phone_num_length = len(str(phone_num))
+                  if phone_num_length < 8:
+                      print("That is not a valid phone number. Please enter a real phone number!")
+                  elif phone_num_length > 10:
+                      print("That is not a valid phone number. Please enter a real phone number!")
+                  elif phone_num_length >= 8:
+                      break
+              elif phone_num == "x":
+                  print("SystemExit: Thank you for using my Henderson Pizza Palace program!")
+                  sys.exit()
+              elif phone_num.isdigit() == False:
+                 print("That is not a valid phone number. Please enter a real phone number!")
+
+      # This code asks the user if the details they entered are correct and allows them to answer with Yes/No.
+      print(
+          "Please double check the information you put in is correct. This is important as this will determine where the pizza will be delivered to.")
+      t.sleep(1)
+      global confirmation
+      confirmation = input(
+          "Is the following information correct? (Yes/No)  \nYour name is {} \nYour address is {}\nYour phone number is {}\n> Enter Here: ".format(
+              name, address, phone_num)).strip().lower()
+
+      # This code allows the user to edit their details when the user replies with "no".
+      if confirmation == "x":
+          print("SystemExit: Thank you for using my Henderson Pizza Palace program!")
+          sys.exit()
+      elif confirmation == "yes" or confirmation == 'y':
+
+          print("Perfect!")
+      elif confirmation == "no" or confirmation == 'n':
+          while True:
+              confirmation = input(
+                  "Please choose the following you would like to edit: \n1: Name \n2: Address \n3: Phone Number\n> Enter Here: ".format(
+                      name, address, phone_num)).strip().lower()
+              if confirmation == "1":
+                  name = str(input("What is your name?\n")).title().strip()
+                  checks_str = name.isalpha()
+                  if checks_str == True:
+                      if name == "X":
+                          print("SystemExit: Thank you for using my Henderson Pizza Palace program!")
+                          sys.exit()
+                      else:
+                          pass
+                      pass
+                  else:
+                      while True:
+                          name = str(input("What is your name?\n")).title().strip()
+                          checks_str = name.isalpha()
+                          if checks_str == True:
+                              if name == "X":
+                                  print("SystemExit: Thank you for using my Henderson Pizza Palace program!")
+                                  sys.exit()
+                              else:
+                                  pass
+                              break
+              elif confirmation == '2':
+                  address = input("Where would you like your pizza delivered?\n").title()
+                  if address == "X":
+                      print("SystemExit: Thank you for using my Henderson Pizza Palace program!")
+                      sys.exit()
+                  else:
+                      pass
+              elif confirmation == '3':
+                  while True:
+                      phone_num = input("What is your phone number?\n").lower()
+                      if phone_num.isdigit() == True:
+                          phone_num_length = len(str(phone_num))
+                          if phone_num_length < 8:
+                              print("That is not a valid phone number. Please enter a real phone number!")
+                          elif phone_num_length > 11:
+                              print("That is not a valid phone number. Please enter a real phone number!")
+                          elif phone_num_length >= 8:
+                              break
+                      elif phone_num == "x":
+                          print("SystemExit: Thank you for using my Henderson Pizza Palace program!")
+                          sys.exit()
+                      elif phone_num.isdigit() == False:
+                          print("That is not a valid phone number. Please enter a real phone number!")
+              elif confirmation == "x":
+                  print("SystemExit: Thank you for using my Henderson Pizza Palace program!")
+                  sys.exit()
+
+              # Asks the user again if the information they entered is correct.
+              confirmation = input(
+                  "Is the following information correct? (Yes/No)  \nYour name is {} \nYour address is {}\nYour phone number is {}\n> Enter Here: ".format(
+                      name, address, phone_num)).strip().lower()
+              if confirmation == "yes" or confirmation == 'y':
+                  print("Perfect!")
+                  break
+              elif confirmation == "x":
+                  print("SystemExit: Thank you for using my Henderson Pizza Palace program!")
+                  sys.exit()
+      else:
+            # Code loops until the user confirms that their information is correct by typing "yes".
+            while True:
+              confirmation = input(
+                  "Is the following information correct? (Yes/No)  \nYour name is {}\nYour phone number is {}\n> Enter Here: ".format(
+                      name, phone_num)).strip().lower()
+              if confirmation == "yes" or confirmation == 'y':
+                  print("Perfect!")
+                  break
+              elif confirmation == "no" or confirmation == 'n':
+                  while True:
+                      confirmation = input(
+                          "Please choose the following you would like to edit: \n1: Name \n2: Address \n3: Phone Number\n> Enter Here: ".format(
+                              name, address, phone_num)).strip().lower()
+                      if confirmation == "1":
+                          name = str(input("What is your name?\n")).title().strip()
+                          checks_str = name.isalpha()
+                          if checks_str == True:
+                              if name == "X":
+                                  print("SystemExit: Thank you for using my Henderson Pizza Palace program!")
+                                  sys.exit()
+                              else:
+                                  pass
+                              pass
+                          else:
+                              while True:
+                                  name = str(input("What is your name?\n")).title().strip()
+                                  checks_str = name.isalpha()
+                                  if checks_str == True:
+                                      if name == "X":
+                                          print(
+                                              "SystemExit: Thank you for using my Henderson Pizza Palace program!")
+                                          sys.exit()
+                                      else:
+                                          pass
+                                      break
+                      elif confirmation == '2':
+                          address = input("Where would you like your pizza delivered?\n").title()
+                          if address == "X":
+                              print("SystemExit: Thank you for using my Henderson Pizza Palace program!")
+                              sys.exit()
+                          else:
+                              pass
+                      elif confirmation == '3':
+                          while True:
+                              phone_num = input("What is your phone number?\n").lower()
+                              if phone_num.isdigit() == True:
+                                  phone_num_length = len(str(phone_num))
+                                  if phone_num_length < 8:
+                                      print(
+                                          "That is not a valid phone number. Please enter a real phone number!")
+                                  elif phone_num_length > 11:
+                                      print(
+                                          "That is not a valid phone number. Please enter a real phone number!")
+                                  elif phone_num_length >= 8:
+                                      break
+                              elif phone_num == "x":
+                                  print("SystemExit: Thank you for using my Henderson Pizza Palace program!")
+                                  sys.exit()
+                              elif phone_num.isdigit() == False:
+                                  print("That is not a valid phone number. Please enter a real phone number!")
+                      confirmation = input(
+                          "Is the following information correct? (Yes/No)  \nYour name is {} \nYour address is {}\nYour phone number is {}\n> Enter Here: ".format(
+                              name, address, phone_num)).strip().lower()
+                      if confirmation == 'yes':
+                          print("Perfect!")
+                          break
+                      elif confirmation == "x":
+                          print("SystemExit: Thank you for using my Henderson Pizza Palace program!")
+                          sys.exit()
