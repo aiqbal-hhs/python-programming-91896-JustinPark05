@@ -31,7 +31,7 @@ def delivery():
                       pass
                   break
 
-      address = input("Where would you like your pizza delivered?\n").title()
+      address = input("Where would you like your pizza delivered? (Address)\n").title()
       if address == "X":
           print("SystemExit: Thank you for using my Henderson Pizza Palace program!")
           sys.exit()
@@ -98,7 +98,7 @@ def delivery():
                                   pass
                               break
               elif confirmation == '2':
-                  address = input("Where would you like your pizza delivered?\n").title()
+                  address = input("Where would you like your pizza delivered? (Address)\n").title()
                   if address == "X":
                       print("SystemExit: Thank you for using my Henderson Pizza Palace program!")
                       sys.exit()
@@ -171,7 +171,7 @@ def delivery():
                                           pass
                                       break
                       elif confirmation == '2':
-                          address = input("Where would you like your pizza delivered?\n").title()
+                          address = input("Where would you like your pizza delivered? (Address)\n").title()
                           if address == "X":
                               print("SystemExit: Thank you for using my Henderson Pizza Palace program!")
                               sys.exit()
