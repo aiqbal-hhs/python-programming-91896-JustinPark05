@@ -5,8 +5,7 @@ import Delivery
 import Pickup
 
 # Welcomes the user to Henderson Pizza Palace.
-print(
-  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n| Welcome to Henderson Pizza Palace :) |\n|        Online Ordering System        |\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n| Welcome to Henderson Pizza Palace :) |\n|        Online Ordering System        |\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 print("")
 print("Type x to exit at any time!")
 print("")
@@ -17,11 +16,11 @@ print("Please choose an option for how you would like to receive your pizza:")
 delivery_status = input("1: Delivery ($3 charge)\n2: Pickup\n> Enter Here: ").lower()
 
 # This runs the delivery function when the user inputs "1" in the delivery status.
-if delivery_status == "1":
+if delivery_status == "1" or delivery_status == "delivery":
   Delivery.delivery()
 
 # This runs the pickup function when the user inputs "2" in the delivery status.
-elif delivery_status == "2":
+elif delivery_status == "2" or delivery_status == "pickup" or delivery_status == "pick up":
   Pickup.pickup()
 
 # This exits the program when the user inputs "x" in the delivery status.
@@ -32,11 +31,11 @@ else:
     while True:
         delivery_status = input("That was not an Option!\n1: Delivery ($3 charge)\n2: Pickup\n> Enter Here: ")
         # This runs the delivery function when the user inputs "1" in the delivery status.
-        if delivery_status == "1":
+        if delivery_status == "1" or delivery_status == "delivery":
             Delivery.delivery()
             break
         # This runs the pickup function when the user inputs "2" in the delivery status.
-        elif delivery_status == "2":
+        elif delivery_status == "2" or delivery_status == "pickup" or delivery_status == "pick up":
             Pickup.pickup()
             break
         elif delivery_status == "x":
@@ -54,6 +53,8 @@ while True:
           print("The maximum amount of pizzas you are allowed to buy are only 5!")
       elif num_of_pizza <= '0':
           print("Please enter a valid amount!")
+      elif len(num_of_pizza) > 1 or len(num_of_pizza) < 1:
+          print("Please enter a valid amount!")
       elif num_of_pizza <= '5':
           print("Perfect!")
           print("Please choose which pizza you would like to order from the list of pizzas")
@@ -69,8 +70,7 @@ gourmet_pizzas = {'Peri Peri Chicken': '$13.50', 'BBQ Chicken & Rasher Bacon': '
                 'Garlic Chicken & Parmesan': '$13.50'}
 
 # This code prints the list of regular range and gourmet range pizzas
-print(
-  "===========================================================================\nREGULAR Range\n===========================================================================")
+print("===========================================================================\nREGULAR Range\n===========================================================================")
 for regular_pizza_name, regular_price in regular_pizzas.items():
   print(f"{regular_pizza_name} : {regular_price}")
 print("")
@@ -87,6 +87,7 @@ print("=========================================================================
 for extra_toppings, extra_toppings_price in extra_toppings.items():
     print(f"{extra_toppings} : {extra_toppings_price}")
 print("")
+
 # This function takes the users pizza order and checks if it's in the menu
 def pizza_orders(user_entry):
   regular_pizzas = ['Hawaiian', 'Pepperoni', 'Ham&Cheese', 'Beef&Onion',
@@ -96,6 +97,7 @@ def pizza_orders(user_entry):
             'Chicken&Camembert', 'Meatlovers', 'Buffalochicken',
             'Garlicchicken&Parmesan']
 
+# This code takes the users order and prints the price of the pizza
   if user_entry in regular_pizzas:
       print(f"{pizza_order} : $8.50")
   elif user_entry not in regular_pizzas:
@@ -105,12 +107,14 @@ def pizza_orders(user_entry):
           print("THAT IS NOT IN THE MENU")
           return 0
 
+# This makes sure the pizza the user ordered is in one of the lists
 regular_pizzas_list = ['Hawaiian', 'Pepperoni', 'Ham & Cheese', 'Beef & Onion','Cheesy Garlic', 'Vegetarian']
 
 gourmet_pizzas_list = ['Peri Peri Chicken', 'Bbq Chicken & Rasher Bacon',
                      'Chicken & Camembert', 'Meat Lovers', 'Buffalo Chicken',
                      'Garlic Chicken & Parmesan']
 
+# This code gives a dictionary of extra toppings for the pizza.
 def topping_choice(user_topping):
     extra_toppings = ['Extra Pepperoni', 'Extra Mushrooms', 'Extra Cheese',
                       'Extra Sausages', 'Extra Onions', 'Extra Black Olives']
@@ -120,6 +124,7 @@ def topping_choice(user_topping):
         print("SORRY THAT IS NOT A TOPPING")
         return 0
 
+# Adds the users order to its respective list
 regular_price_list = []
 gourmet_price_list = []
 topping_choice_list = []
@@ -261,7 +266,7 @@ total_price_regular_range = len(regular_price_list) * 8.50
 total_price_gourmet_range = len(gourmet_price_list) * 13.50
 extra_toppings_price = len(topping_choice_list) * 0.50
 total_price = total_price_regular_range + total_price_gourmet_range + extra_toppings_price
-if delivery_status == "1":
+if delivery_status == "1" or delivery_status == "delivery":
     total_price = total_price_regular_range + extra_toppings_price + total_price_gourmet_range + 3 #This code charges an extra $3 for delivery fees
 
 # This code prints out the receipt of the order.
