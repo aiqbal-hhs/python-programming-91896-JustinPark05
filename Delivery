@@ -8,7 +8,7 @@ def delivery():
       print("\nPlease enter your details in the following: ")
 
       # This code makes sure the user doesn’t type any symbols or numbers in their name.
-      name = str(input("What is your name?\n")).title().strip()
+      name = str(input("What is your name?\n➤ ")).title().strip()
       checks_str = name.isalpha()
       if checks_str == True:
           if name == "X":
@@ -21,7 +21,7 @@ def delivery():
 
           # This code puts the name input in a while loop until a valid name is entered (no symbols or numbers).
           while True:
-              name = str(input("What is your name?\n")).title().strip()
+              name = str(input("What is your name?\n➤ ")).title().strip()
               checks_str = name.isalpha()
               if checks_str == True:
                   if name == "X":
@@ -31,7 +31,7 @@ def delivery():
                       pass
                   break
 
-      address = input("Where would you like your pizza delivered? (Address)\n").title()
+      address = input("Where would you like your pizza delivered? (Address)\n➤ ").title()
       if address == "X":
           print("SystemExit: Thank you for using my Henderson Pizza Palace program!")
           sys.exit()
@@ -40,7 +40,7 @@ def delivery():
 
       # This code puts the phone number input in a while loop until valid phone number is entered (8-10 characters).
       while True:
-              phone_num = input("What is your phone number?\n").lower()
+              phone_num = input("What is your phone number?\n➤ ").lower()
               if phone_num.isdigit() == True:
                   phone_num_length = len(str(phone_num))
                   if phone_num_length < 8:
@@ -61,7 +61,7 @@ def delivery():
       t.sleep(1)
       global confirmation
       confirmation = input(
-          "Is the following information correct? (Yes/No)  \nYour name is {} \nYour address is {}\nYour phone number is {}\n> Enter Here: ".format(
+          "Is the following information correct? (Yes/No)  \nYour name is {} \nYour address is {}\nYour phone number is {}\n➤ Enter Here: ".format(
               name, address, phone_num)).strip().lower()
 
       # This code allows the user to edit their details when the user replies with "no".
@@ -69,15 +69,14 @@ def delivery():
           print("SystemExit: Thank you for using my Henderson Pizza Palace program!")
           sys.exit()
       elif confirmation == "yes" or confirmation == 'y':
-
           print("Perfect!")
       elif confirmation == "no" or confirmation == 'n':
           while True:
               confirmation = input(
-                  "Please choose the following you would like to edit: \n1: Name \n2: Address \n3: Phone Number\n> Enter Here: ".format(
+                  "Please choose the following you would like to edit: \n1: Name \n2: Address \n3: Phone Number\n➤ Enter Here: ".format(
                       name, address, phone_num)).strip().lower()
               if confirmation == "1":
-                  name = str(input("What is your name?\n")).title().strip()
+                  name = str(input("What is your name?\n➤ ")).title().strip()
                   checks_str = name.isalpha()
                   if checks_str == True:
                       if name == "X":
@@ -88,7 +87,7 @@ def delivery():
                       pass
                   else:
                       while True:
-                          name = str(input("What is your name?\n")).title().strip()
+                          name = str(input("What is your name?\n➤ ")).title().strip()
                           checks_str = name.isalpha()
                           if checks_str == True:
                               if name == "X":
@@ -98,7 +97,7 @@ def delivery():
                                   pass
                               break
               elif confirmation == '2':
-                  address = input("Where would you like your pizza delivered? (Address)\n").title()
+                  address = input("Where would you like your pizza delivered? (Address)\n➤ ").title()
                   if address == "X":
                       print("SystemExit: Thank you for using my Henderson Pizza Palace program!")
                       sys.exit()
@@ -106,7 +105,7 @@ def delivery():
                       pass
               elif confirmation == '3':
                   while True:
-                      phone_num = input("What is your phone number?\n").lower()
+                      phone_num = input("What is your phone number?\n➤ ").lower()
                       if phone_num.isdigit() == True:
                           phone_num_length = len(str(phone_num))
                           if phone_num_length < 8:
@@ -126,7 +125,7 @@ def delivery():
 
               # Asks the user again if the information they entered is correct.
               confirmation = input(
-                  "Is the following information correct? (Yes/No)  \nYour name is {} \nYour address is {}\nYour phone number is {}\n> Enter Here: ".format(
+                  "Is the following information correct? (Yes/No)  \nYour name is {} \nYour address is {}\nYour phone number is {}\n➤ Enter Here: ".format(
                       name, address, phone_num)).strip().lower()
               if confirmation == "yes" or confirmation == 'y':
                   print("Perfect!")
@@ -138,7 +137,7 @@ def delivery():
             # Code loops until the user confirms that their information is correct by typing "yes".
             while True:
               confirmation = input(
-                  "Is the following information correct? (Yes/No)  \nYour name is {}\nYour phone number is {}\n> Enter Here: ".format(
+                  "Is the following information correct? (Yes/No)  \nYour name is {}\nYour phone number is {}\n➤ Enter Here: ".format(
                       name, phone_num)).strip().lower()
               if confirmation == "yes" or confirmation == 'y':
                   print("Perfect!")
@@ -146,10 +145,10 @@ def delivery():
               elif confirmation == "no" or confirmation == 'n':
                   while True:
                       confirmation = input(
-                          "Please choose the following you would like to edit: \n1: Name \n2: Address \n3: Phone Number\n> Enter Here: ".format(
+                          "Please choose the following you would like to edit: \n1: Name \n2: Address \n3: Phone Number\n➤ Enter Here: ".format(
                               name, address, phone_num)).strip().lower()
                       if confirmation == "1":
-                          name = str(input("What is your name?\n")).title().strip()
+                          name = str(input("What is your name?\n➤ ")).title().strip()
                           checks_str = name.isalpha()
                           if checks_str == True:
                               if name == "X":
@@ -160,7 +159,7 @@ def delivery():
                               pass
                           else:
                               while True:
-                                  name = str(input("What is your name?\n")).title().strip()
+                                  name = str(input("What is your name?\n➤ ")).title().strip()
                                   checks_str = name.isalpha()
                                   if checks_str == True:
                                       if name == "X":
@@ -171,7 +170,7 @@ def delivery():
                                           pass
                                       break
                       elif confirmation == '2':
-                          address = input("Where would you like your pizza delivered? (Address)\n").title()
+                          address = input("Where would you like your pizza delivered? (Address)\n➤ ").title()
                           if address == "X":
                               print("SystemExit: Thank you for using my Henderson Pizza Palace program!")
                               sys.exit()
@@ -179,7 +178,7 @@ def delivery():
                               pass
                       elif confirmation == '3':
                           while True:
-                              phone_num = input("What is your phone number?\n").lower()
+                              phone_num = input("What is your phone number?\n➤ ").lower()
                               if phone_num.isdigit() == True:
                                   phone_num_length = len(str(phone_num))
                                   if phone_num_length < 8:
@@ -196,7 +195,7 @@ def delivery():
                               elif phone_num.isdigit() == False:
                                   print("That is not a valid phone number. Please enter a real phone number!")
                       confirmation = input(
-                          "Is the following information correct? (Yes/No)  \nYour name is {} \nYour address is {}\nYour phone number is {}\n> Enter Here: ".format(
+                          "Is the following information correct? (Yes/No)  \nYour name is {} \nYour address is {}\nYour phone number is {}\n➤ Enter Here: ".format(
                               name, address, phone_num)).strip().lower()
                       if confirmation == 'yes':
                           print("Perfect!")
