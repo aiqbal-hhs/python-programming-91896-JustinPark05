@@ -7,7 +7,7 @@ def pickup():
     print("Please enter your details in the following: ")
 
     # This code makes sure the user doesn’t type any symbols or numbers in their name.
-    name = str(input("What is your name?\n")).title().strip()
+    name = str(input("What is your name?\n➤ ")).title().strip()
     checks_str = name.isalpha()
     if checks_str == True:
         if name == "X":
@@ -20,7 +20,7 @@ def pickup():
 
         # This code puts the name input in a while loop until a valid name is entered (no symbols or numbers).
         while True:
-            name = str(input("What is your name?\n")).title().strip()
+            name = str(input("What is your name?\n➤ ")).title().strip()
             checks_str = name.isalpha()
             if checks_str == True:
                 if name == "X":
@@ -32,7 +32,7 @@ def pickup():
 
     # This code puts the phone number input in a while loop until valid phone number is entered (8-10 characters).
     while True:
-        phone_num = input("What is your phone number?\n").lower()
+        phone_num = input("What is your phone number?\n➤ ").lower()
         if phone_num.isdigit() == True:
             phone_num_length = len(str(phone_num))
             if phone_num_length < 8:
@@ -52,7 +52,7 @@ def pickup():
         "Please double check the information you put in is correct. This is important as this will determine where the pizza will be delivered to.")
     t.sleep(0.8)
     global confirmation
-    confirmation = input("Is the following information correct? (Yes/No)  \nYour name is {}\nYour phone number is {}\n> Enter Here: ".format(name, phone_num)).strip().lower()
+    confirmation = input("Is the following information correct? (Yes/No)  \nYour name is {}\nYour phone number is {}\n➤ Enter Here: ".format(name, phone_num)).strip().lower()
 
     # This code allows the user to edit their details when the user replies with "no".
     if confirmation == "x":
@@ -63,10 +63,10 @@ def pickup():
     elif confirmation == "no" or confirmation == 'n':
         while True:
             confirmation = input(
-                "Please choose the following you would like to edit: \n1: Name \n2: Phone Number\n> Enter Here: ".format(
+                "Please choose the following you would like to edit: \n1: Name \n2: Phone Number\n➤ Enter Here: ".format(
                     name, phone_num)).strip().lower()
             if confirmation == "1":
-                name = str(input("What is your name?\n")).title().strip()
+                name = str(input("What is your name?\n➤ ")).title().strip()
                 checks_str = name.isalpha()
                 if checks_str == True:
                     if name == "X":
@@ -77,7 +77,7 @@ def pickup():
                     pass
                 else:
                     while True:
-                        name = str(input("What is your name?\n")).title().strip()
+                        name = str(input("What is your name?\n➤ ")).title().strip()
                         checks_str = name.isalpha()
                         if checks_str == True:
                             if name == "X":
@@ -88,7 +88,7 @@ def pickup():
                             break
             elif confirmation == '2':
                 while True:
-                    phone_num = input("What is your phone number?\n").lower()
+                    phone_num = input("What is your phone number?\n➤ ").lower()
                     if phone_num.isdigit() == True:
                         phone_num_length = len(str(phone_num))
                         if phone_num_length < 8:
@@ -108,7 +108,7 @@ def pickup():
 
             # Asks the user again if the information they entered is correct.
             confirmation = input(
-                "Is the following information correct? (Yes/No)  \nYour name is {} \nYour phone number is {}\n> Enter Here: ".format(
+                "Is the following information correct? (Yes/No)  \nYour name is {} \nYour phone number is {}\n➤ Enter Here: ".format(
                     name, phone_num)).strip().lower()
             if confirmation == "yes" or confirmation == 'y':
                 print("Perfect!")
@@ -120,7 +120,7 @@ def pickup():
         # Code loops until the user confirms that their information is correct by typing "yes".
         while True:
             confirmation = input(
-                "Is the following information correct? (Yes/No)  \nYour name is {}\nYour phone number is {}\n> Enter Here: ".format(
+                "Is the following information correct? (Yes/No)  \nYour name is {}\nYour phone number is {}\n➤ Enter Here: ".format(
                     name, phone_num)).strip().lower()
             if confirmation == "yes" or confirmation == 'y':
                 print("Perfect!")
@@ -128,10 +128,10 @@ def pickup():
             elif confirmation == "no" or confirmation == 'n':
                 while True:
                     confirmation = input(
-                        "Please choose the following you would like to edit: \n1: Name \n2: Phone Number\n> Enter Here: ".format(
+                        "Please choose the following you would like to edit: \n1: Name \n2: Phone Number\n➤ Enter Here: ".format(
                             name, phone_num)).strip().lower()
                     if confirmation == "1":
-                        name = str(input("What is your name?\n")).title().strip()
+                        name = str(input("What is your name?\n➤ ")).title().strip()
                         checks_str = name.isalpha()
                         if checks_str == True:
                             if name == "X":
@@ -142,7 +142,7 @@ def pickup():
                             pass
                         else:
                             while True:
-                                name = str(input("What is your name?\n")).title().strip()
+                                name = str(input("What is your name?\n➤ ")).title().strip()
                                 checks_str = name.isalpha()
                                 if checks_str == True:
                                     if name == "X":
@@ -154,7 +154,7 @@ def pickup():
                                     break
                     elif confirmation == '2':
                         while True:
-                            phone_num = input("What is your phone number?\n").lower()
+                            phone_num = input("What is your phone number?\n➤ ").lower()
                             if phone_num.isdigit() == True:
                                 phone_num_length = len(str(phone_num))
                                 if phone_num_length < 8:
@@ -176,7 +176,7 @@ def pickup():
 
                     # Asks the user again if the information they entered is correct.
                     confirmation = input(
-                        "Is the following information correct? (Yes/No)  \nYour name is {} \nYour phone number is {}\n> Enter Here: ".format(
+                        "Is the following information correct? (Yes/No)  \nYour name is {} \nYour phone number is {}\n➤ Enter Here: ".format(
                             name, phone_num)).strip().lower()
                     if confirmation == "yes" or confirmation == 'y':
                         print("Perfect!")
